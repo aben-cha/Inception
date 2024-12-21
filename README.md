@@ -3,8 +3,7 @@
 # Project Overview
 
 This project focuses on enhancing your understanding of system administration through the use of Docker.
-The objective is to gain hands-on experience with virtualization by creating and managing multiple Docker 
-images within a personal virtual machine.
+The objective is to gain hands-on experience with virtualization by creating and managing multiple Docker images within a personal virtual machine.
 
 
 # Learning Goals
