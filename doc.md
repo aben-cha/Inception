@@ -20,8 +20,7 @@
 * conteneur: enveloppe permettant de packager une application.
 
 ===================(Docker)=================
-* Docker permet de creer des environemments(appelees containers) de maniere a 
-  isoler des applications.
+* Docker permet de creer des environemments(appelees containers) de maniere a isoler des applications.
 * Docker est un logiciel libre qui permet le depoiement d'aaplications sous
   la forme de conteneurs logiciels. 
 
@@ -38,8 +37,8 @@
     * docker-run permet d'executer une application dans une machine 
 
 ====> Docker se compose de:
-    * Docker Engine c'est le moteur de docker qui permet de creer le Host Docker 
-      sur une machine Linux (Docker daemon).
+    * Docker Engine c'est le moteur de docker qui permet de creer le 
+      Host Docker sur une machine Linux (Docker daemon).
       ==> c'est le seul qui est capable d'executer un conteneur
       ==> docker engine ne peut sinstaller que sur un system linux
     * Un client Docker qui peut se trouve dans n'importe quelle autre machine et qui est connecte

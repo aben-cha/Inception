@@ -1,0 +1,50 @@
+* docker is a platforme for building, running and shipping
+  applications.
+* if the application works on your machine it can run and function
+  the same way on other machines
+
+
+=====> Probleme: it works on my machine.
+* Reasons:
+    1- one or more files missing
+    2- software version mismatch
+    3- diffirent configuration settings.
+
+
+===> for that docker comes to the rescue, with docker we can
+     easily package up our application with everything it needs
+     and run it anywhere on any machine with docker.
+
+
+======> Container vs virtual machine
+* container: is an isolated environment for running an application
+    * allow running multiple apps in isolation
+    * are lightweight : don't need a full operating system.
+    * all containers in a single machine share the operating system of the host
+    * start quickly
+    * Need less hardware resources
+
+
+* virtual machine: is an abstraction of a machine (physical hardware).
+    Problems:
+        - each VM needs a full blown OS.
+        - slow to start
+
+* heypervisor is a software we use to create and manage virtual machines
+    example: VirtualBox, VMware : which are cross platform 
+
+
+======> docker Architecture:
+* docker uses a client server architecture so it has a client component that
+  talk to a server component using a restful API, the server called the Docker Engine
+  sits on the background and takes care of building and running docker containers, 
+  technically a container is just a process like other processes runnign on your
+  computer.
+* all containers on a host share the operating system of the host, all these containers
+  share the kernelof the host.
+    ==> A kernel is the core of the OS it's like the engine of a car.
+        it's the part that manages applications and hardware resources like (CPU, memory).
+
+
+
+=======> installing docker

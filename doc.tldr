@@ -1647,8 +1647,8 @@
 					"a21lh": {
 						"id": "a21lh",
 						"index": "a21lh",
-						"x": 3.8289508175283804,
-						"y": 221.11589665932047
+						"x": 2.7221698116690054,
+						"y": 245.5191254190861
 					}
 				},
 				"scale": 1
@@ -2070,8 +2070,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 52.448520676466785,
-			"y": 1777.3210071518151,
+			"x": 51.00809098896684,
+			"y": 1769.6088794662683,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2081,12 +2081,12 @@
 			"props": {
 				"color": "orange",
 				"size": "m",
-				"w": 621.5457763671875,
-				"text": "Docker Host : c'est la machine dans laquelle vous \navez installe docker engine",
+				"w": 711.2718252543663,
+				"text": "Docker Host : c'est la machine dans laquelle vous \navez installer docker engine",
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
-				"scale": 1.144359518315143
+				"scale": 1.090341344042213
 			},
 			"parentId": "page:page",
 			"index": "b0K1iV",
@@ -2309,19 +2309,21 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 592.6017167169895,
-			"y": 410.1062175557724,
-			"lastActivityTimestamp": 1734816695499,
+			"x": 191.09620829413788,
+			"y": 1926.5393097405952,
+			"lastActivityTimestamp": 1734818136446,
 			"meta": {}
 		},
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {},
+			"stylesForNextShape": {
+				"tldraw:color": "yellow"
+			},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "move",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -2331,8 +2333,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 775,
-				"h": 886.111083984375
+				"w": 692.361083984375,
+				"h": 647.22216796875
 			},
 			"insets": [
 				false,
@@ -2362,17 +2364,8 @@
 		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:AhNNoOlY9Dh_6RmObxfzj",
-				"shape:ixPeoPn832YWzde5TChX7",
-				"shape:lGRnckmo6HGdP184t4Al4",
-				"shape:puugDvh5UY441yS0xoTNz",
-				"shape:lufY9jZqcuxEVX8t6FoxX",
-				"shape:uHCtKjVdphmjF4JXlwp5f",
-				"shape:dOhwzeV9HYKzvzJ3FrbwJ",
-				"shape:UbCPz28ZRAcLimqU-Ts3N"
-			],
-			"hoveredShapeId": null,
+			"selectedShapeIds": [],
+			"hoveredShapeId": "shape:yD3ifAxW5q5C57idEx_2l",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -2382,12 +2375,58 @@
 			"typeName": "instance_page_state"
 		},
 		{
-			"x": -31.222078045114444,
-			"y": -52.624680690538035,
+			"x": 99.2954848210965,
+			"y": -1544.4212677484077,
 			"z": 1,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"x": 370.56401224921603,
+			"y": 687.6308390482953,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:wZMLP8aEDSHopm1ypQhqp",
+			"type": "text",
+			"props": {
+				"color": "orange",
+				"size": "m",
+				"w": 476.9440002441406,
+				"text": "Petite machine virtuelle qui est légère",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 0.7641006005630354
+			},
+			"parentId": "page:page",
+			"index": "b0U9ea",
+			"typeName": "shape"
+		},
+		{
+			"x": 370.71315928290744,
+			"y": 709.2650241937213,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:-l6muhVDbl-baSqBpiNmT",
+			"type": "text",
+			"props": {
+				"color": "orange",
+				"size": "m",
+				"w": 652.8174438476562,
+				"text": "Un conteneur on peut le demarrer dans n'importe\nquelle architecture soit dans une machine physiyque\nsimple, soit en cloud...",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 0.7440980590347895
+			},
+			"parentId": "page:page",
+			"index": "b0V7Jd",
+			"typeName": "shape"
 		}
 	]
 }
