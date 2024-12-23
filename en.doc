@@ -1,5 +1,7 @@
 * docker is a platforme for building, running and shipping
   applications.
+* is a tool for running applications in an isolated environment, similar 
+   to virtual machine  
 * if the application works on your machine it can run and function
   the same way on other machines
 
@@ -15,6 +17,41 @@
      easily package up our application with everything it needs
      and run it anywhere on any machine with docker.
 
+====> Image: * is a template for creating an environment.
+             * it's a snapchot.
+             * Has everything need to run your Apps.
+             * OS, Software, App Code.
+
+====> container: * running instance of an Image.
+
+
+====> exposing port : mapping port from host to container 
+* example :  we habe a single container which is running nginx, this
+             container is exposing a tcp port is 80.
+    we want from the host to issue a request to out container which is exposing port 80
+    so we want to be able to go to our web browser type localhost 8080 and then that port
+    8080 should be mapped to port 80 on the conatiner so basically we want to go 
+    from the host to the conatiner
+    for that by adding -p before we run the conatiner.
+    -p 8080:80
+  ===> exposing multiple ports:
+    docker run -d -p 3000:80 -p 8080:80 nginx:latest
+
+======> managing containers:
+* starting a container:
+  docker run -d -p 3000:80 -p 8080:80 nginx:latest
+* list all containers running
+  docker ps 
+  ==> not running docker ps -a 
+* stop a container:
+  docker stop conID/conName
+* start a container:
+  docker start conID/conName
+* delete a container:
+  docker rm -f $(docker ps -aq) force rm all containers where they are running
+  docker rm conID/conName
+* naming container:
+  docker run --name website -d -p 3000:80 -p 8080:80 nginx:latest
 
 ======> Container vs virtual machine
 * container: is an isolated environment for running an application
@@ -33,12 +70,11 @@
 * heypervisor is a software we use to create and manage virtual machines
     example: VirtualBox, VMware : which are cross platform 
 
-
 ======> docker Architecture:
 * docker uses a client server architecture so it has a client component that
   talk to a server component using a restful API, the server called the Docker Engine
   sits on the background and takes care of building and running docker containers, 
-  technically a container is just a process like other processes runnign on your
+  technically a container is just a process like other processes running on your
   computer.
 * all containers on a host share the operating system of the host, all these containers
   share the kernelof the host.
@@ -48,3 +84,21 @@
 
 
 =======> installing docker
+* A Dockerfile is a plain text file that includes instructions that docker
+  uses to package up the application into an image.
+  ==> this image contains everything our application needs to run.
+  ==> once we have an image we tell docker to start a container using 
+      that image, one we have an image we can push it to a docker registry(docker hup), 
+      then we can pull it on any machines running docker 
+
+
+=======> Docker Volumes:
+    * allows us to share data (Files, Folders).
+    * Between Host and Container.
+    * Between conatiners
+    docker exec -it website bash
+    ==> Volumes(Between containers) : copy content from website to website_copy
+    docker run --name website-copy --volumes-from website -d -p 8081:80 nginx:latest
+
+===> Dockerfile :
+  * Build own images. 
