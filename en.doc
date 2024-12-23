@@ -101,4 +101,15 @@
     docker run --name website-copy --volumes-from website -d -p 8081:80 nginx:latest
 
 ===> Dockerfile :
-  * Build own images. 
+  * Build own images.
+  * allows us to create our own images by creating a file called 
+    Dockerfile
+  * this file contains a list of steps of how to create images
+  * if we are building our own image we don't need to mount a volume
+    -v $(pwd):/usr/share/nginx/html
+
+==> building images:
+  * we create a Dockerfile
+  * docker build --tag/-t nameImage:latest URL(where the dockerfile)
+  * when we have a image now we run a container from it
+    docker run --name website -p 8080:80 -d website:latest
