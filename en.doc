@@ -59,7 +59,7 @@
     * are lightweight : don't need a full operating system.
     * all containers in a single machine share the operating system of the host
     * start quickly
-    * Need less hardware resources
+  * Need less hardware resources    
 
 
 * virtual machine: is an abstraction of a machine (physical hardware).
