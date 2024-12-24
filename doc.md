@@ -30,7 +30,7 @@
     * image : * template des conteneurs
             * c'est une ensemble de fichiers, lorsque l'image il est generée par docker
       vous pouver la publier dans ce qu'on appelle un registre docker ca peut etre prive ou public
-    * Docker Hub :c'est une platforme publique dans laquelle on peur publier des conteneurs
+    * Docker Hub :c'est une platforme publique dans laquelle on peut publier des conteneurs
       a chaque fois 
       ==> a chaque fois que vous creez une application et vous vouler la publier d'une maniere
           publique pour que les autres utilisent directement tout simplement vous utiliser docker-push
@@ -40,7 +40,7 @@
     * Docker Engine c'est le moteur de docker qui permet de creer le 
       Host Docker sur une machine Linux (Docker daemon).
       ==> c'est le seul qui est capable d'executer un conteneur
-      ==> docker engine ne peut sinstaller que sur un system linux
+      ==> docker engine ne peut s'installer que sur un system linux
     * Un client Docker qui peut se trouve dans n'importe quelle autre machine et qui est connecte
       a Docker engine via differentes connecterus exposes par docker (socket, REST, API, ..)
           

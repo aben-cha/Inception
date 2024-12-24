@@ -59,7 +59,7 @@
     * are lightweight : don't need a full operating system.
     * all containers in a single machine share the operating system of the host
     * start quickly
-  * Need less hardware resources    
+    * Need less hardware resources
 
 
 * virtual machine: is an abstraction of a machine (physical hardware).
@@ -113,3 +113,46 @@
   * docker build --tag/-t nameImage:latest URL(where the dockerfile)
   * when we have a image now we run a container from it
     docker run --name website -p 8080:80 -d website:latest
+
+
+
+
+
+==> when we do :
+  docker pull nginx:1.23
+  --> Docker client will contact Docker Hub and it will say
+      I want to grab the nginx image with this specific tag
+      and download it locally
+
+
+
+=====> how do we access to a container?
+* application inside container runs in an isolated Docker network.
+  for that we want to expose the containr port to the
+  host(the machine the container runs on).
+* Port binding:  bind the conatiner's port to the host's port to
+  mak the service available to the outside world.
+* for example : nginx port 80
+  bind that container Port 80 to our local host on any port
+  like 8080, so that I can access the containe or whatever is 
+  running inside the conatiner as it if running on my local host
+  port 8080 ===> -p 8080:80
+-d ==>means in the background in detached mode
+ for standard to use the same port on your host as container is using
+
+
+
+
+ ==============> Structure of Dockefile:
+ * Dockerfiles start from a parent image or base-image
+ * it's a Docker image that your image is based on 
+ * from, copy
+ * WORKDIR: sets the working directory for all following commands
+    like changing into a directory : "cd ..."
+
+====> from docker to container:
+  Dockerfile, build, Image, run ==> container.
+
+
+=====> A Docker image consists of layers
+* each instruction in the dockerfile creates one laayer
