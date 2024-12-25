@@ -156,3 +156,8 @@
 
 =====> A Docker image consists of layers
 * each instruction in the dockerfile creates one laayer
+
+
+
+
+========> docker volumes 
