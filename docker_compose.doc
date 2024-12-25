@@ -1,0 +1,49 @@
+=============(Docker Compose)============
+* is basically a tool that allows us to define and run multiple services
+  and applications that belong together in one environment (1 isolated 
+  environment)
+* for building and running multi-container applications
+* Docker compose which is built on top of docker engine it makes it incredibly
+  easy to start applications with multiple containers
+
+
+
+=========(Running multi-container Apps)=========
+* Front-end : react
+* Back-end  : node
+* Database  : mongodb
+* for running our front-end and back-end tests we need two terminal
+  and also download and install mongodb
+  ==> with docker we don't have to do any of these things all we have
+      to do is run a single command 
+
+* with docker file we have a YAML File:
+  --> we use it to configure and maintain our application's services.
+  --> with a single command, we create and start all the services from 
+      our configuration
+* compose.yaml structure :
+  version: "3.1" ==> version of docker-compose
+  services: == > list of all conatiners that we want to run 
+    frontend: ==> container-name
+    backend:
+    mongodb:
+      image: mongo
+      ports:
+        - 27017:27017
+      environment:
+        -MONGO..._USERNAME=admin
+        -MONGO..._PASSWORD=secret
+
+
+====> why we use yml files:
+      for configuration files 
+====> json for exchanging data between multiple computers
+      like a client and a server.
+
+=======>* docker network : 
+  * allows containers to communicate with each other and with 
+  the external world, cmd: docker network create nameNetwork
+  * by default Compose, sets up a single network for our app
+
+
+======> difference betweem up/down and start/stop
