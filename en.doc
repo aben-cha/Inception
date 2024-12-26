@@ -139,8 +139,14 @@
   port 8080 ===> -p 8080:80
 -d ==>means in the background in detached mode
  for standard to use the same port on your host as container is using
-
-
+* list of all networks that we have 
+ docker netwrok ls
+* creating a network:
+  docker network create nameNetwork
+* connecting a container to the network:
+  docker  network  connect  netwrokdName/idNetwork  containerName
+* running container and provide or specify a network that we want to use:
+  docker  run -p 8080:80 --net  nameNetwork  containerName
 
 
  ==============> Structure of Dockefile:
@@ -160,4 +166,4 @@
 
 
 
-========> docker volumes 
+========> docker volumes
