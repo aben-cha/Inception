@@ -131,7 +131,7 @@
   for that we want to expose the containr port to the
   host(the machine the container runs on).
 * Port binding:  bind the conatiner's port to the host's port to
-  mak the service available to the outside world.
+  make the service available to the outside world.
 * for example : nginx port 80
   bind that container Port 80 to our local host on any port
   like 8080, so that I can access the containe or whatever is 
