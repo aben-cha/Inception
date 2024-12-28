@@ -1,0 +1,24 @@
+docker network create wordpress-network
+
+docker run -d \
+    --name wordpress-db \
+    --network wordpress-network \
+    -e MYSQL_ROOT_PASSWORD=your_root_password \
+    -e MYSQL_DATABASE=wordpress \
+    -e MYSQL_USER=wordpress_user \
+    -e MYSQL_PASSWORD=your_password \
+    -v wordpress-db-data:/var/lib/mysql \
+    mysql:5.7
+
+
+docker run -d \
+    --name wordpress \
+    --network wordpress-network \
+    -e WORDPRESS_DB_HOST=wordpress-db \
+    -e WORDPRESS_DB_USER=wordpress_user \
+    -e WORDPRESS_DB_PASSWORD=your_password \
+    -e WORDPRESS_DB_NAME=wordpress \
+    -p 8080:80 \
+    -v wordpress-content:/var/www/html \
+    wordpress:latest
+

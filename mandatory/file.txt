@@ -48,7 +48,6 @@
   designed to provide communications security over a 
   computer network, such as the internet.
 
-
 ===========> Container WordPress + php-fpm:
 * PHP-FPm : stands for PHP FastCGI Process Manager
   1- php : used to create dynamic websites(like wordpress or e-commerce stores).
@@ -62,7 +61,8 @@
     1- Faster for busy websites:
       instead of starting a new PHP worke for every request PHP-FPM keeps someone
       ready in the backgroung, this saves time and makes the website faster
-
+      
+* Wordpress need database, without it wordpress would be just static HTML.
 
 ===========> Container mariadb:
 * docker pull mariad
