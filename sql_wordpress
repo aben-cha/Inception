@@ -22,3 +22,44 @@ docker run -d \
     -v wordpress-content:/var/www/html \
     wordpress:latest
 
+
+I'll help you set up WordPress with MariaDB. Here's the step-by-step process:
+
+docker network create wordpress-net
+
+
+docker run -d \
+    --name wordpressdb \
+    --network wordpress-net \
+    -e MYSQL_ROOT_PASSWORD=rootpassword \
+    -e MYSQL_DATABASE=wordpress \
+    -e MYSQL_USER=wordpress \
+    -e MYSQL_PASSWORD=wordpress_password \
+    -v mariadb_data:/var/lib/mysql \
+    mariadb:latest
+
+
+docker run -d \
+    --name wordpress \
+    --network wordpress-net \
+    -p 8080:80 \
+    -e WORDPRESS_DB_HOST=wordpressdb \
+    -e WORDPRESS_DB_USER=wordpress \
+    -e WORDPRESS_DB_PASSWORD=wordpress_password \
+    -e WORDPRESS_DB_NAME=wordpress \
+    -v wordpress_data:/var/www/html \
+    wordpress:latest
+
+
+# Stop containers
+docker stop wordpress wordpressdb
+
+# Start containers
+docker start wordpressdb wordpress
+
+# View logs
+docker logs wordpress
+docker logs wordpressdb
+
+# Remove containers
+docker rm -f wordpress wordpressdb
