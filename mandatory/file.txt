@@ -83,4 +83,6 @@
 * INSERT INTO table_db(id, name) VALUES(0, "name0"), (1, "name1"),(2, "name2");
 * SELECT * FROM table_db;
 
-* volumes 
+========================> Container Nginx:
+* nginx it is a server that is going to serve web content to our browser
+* /Users/aben-cha/.brew/etc/nginx/

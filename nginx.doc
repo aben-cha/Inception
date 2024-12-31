@@ -1,0 +1,62 @@
+====================(Nginx)=============================
+NGINX (pronounced "Engine-X") is:
+* A web server refers to both the physical machine and software
+  running on the machine 
+* Primary function is to serve web pages to client browser's
+* A web server that serves content like websites and applications.
+* A reverse proxy that sits between clients (like browsers) and backend servers (like application servers or databases).
+* A load balancer that distributes traffic across multiple servers to ensure reliability and speed.
+  ==> some load balancing method :
+    * Least Connections.
+    * Round Robin.
+* A proxy server that helps with caching, security, and handling client requests.
+Proxy: 
+==> SSL/ TLS:
+    Secures communication between client and server using HTTPS.
+==> Caching:
+    Storing responses temporarily to improve performance and reduce server load.
+
+
+=================(installing nginx)==================
+* sudo apt update
+* sudo apt install nginx
+* sudo systemctl start nginx
+* sudo systemctl enable nginx
+* sudo systemctl status nginx
+
+
+====================(Configuring NGINX as Web Server)===========================
+http {
+    server {
+
+    }
+
+    server {
+
+    }
+}
+* it is possible to add multiple server directives into the http context 
+  to define multiple virtual servers
+* the server configuration block usually includes a listen directive to 
+  specify the IP address and port, on which the serve listens for requests, 
+  Both IPv4 or IPv6 are accepted.
+* if the listen directive is not included at all :
+        ==> The standard port is 80/tcp.
+        ==> The default port is 8000/tcp
+* localhost: refers to the local machine that you are currently using 
+* worker_processes:
+  instead of using a new processs for every incoming connection, Nginx uses
+  worker processes that handle many connections using a single-threaded event loop.
+  ==> it's generally recommended to set the worker processes value to be equal to
+      the number of CPU cores that is available on the server where Nginx is running 
+  ==> worker_processes auto : means nginx automatically detects the number of CPU cores 
+      available on the server and starts a corresponding number of worler nodes. 
+* worker_connections:
+  Per worker process: how many simultaneous connections can be opened
+events {
+  worker_connections 1024;
+}
+* if we have 1 worker processes, you will be able to serve 1024 clients
+* if we have 2 worker processes you will be able to serve 2*1024 = 2048 clients
+* server_name : which domain or IP address this server block should respond to, 
+                basically where the client sending those requests
