@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant User
+    participant NGINX
+    participant Socket as Unix Socket
+    participant PHP_FPM as PHP-FPM
+    participant FileSystem as File System
+
+    User->>NGINX: Request page.php
+    Note over NGINX: Matches location ~ \.php$
+    
+    NGINX->>FileSystem: Check if file exists
+    FileSystem-->>NGINX: File found
+    
+    NGINX->>Socket: Forward request via<br/>fastcgi_pass
+    Socket->>PHP_FPM: Pass request
+    
+    PHP_FPM->>FileSystem: Read PHP file
+    FileSystem-->>PHP_FPM: Return file content
+    
+    Note over PHP_FPM: Process PHP code
+    
+    PHP_FPM-->>Socket: Return processed result
+    Socket-->>NGINX: Pass result
+    NGINX-->>User: Send HTML response
+
+    Note over User,NGINX: If file not found:<br/>Return 404 error

@@ -28,11 +28,9 @@ Proxy:
 ====================(Configuring NGINX as Web Server)===========================
 http {
     server {
-
     }
-
+    
     server {
-
     }
 }
 * it is possible to add multiple server directives into the http context 
@@ -60,3 +58,62 @@ events {
 * if we have 2 worker processes you will be able to serve 2*1024 = 2048 clients
 * server_name : which domain or IP address this server block should respond to, 
                 basically where the client sending those requests
+* configuring locations :
+  there are two types of paramater to the location directive:
+      --> Prefix strings (pathnames) : /some/path
+      --> Regular expressions : ~ or ~*
+
+* error_log /var/log/nginx/error.log warn;
+  Defines where error logs are stored 
+  warn sets the logging level(debug, info, warn, error..)
+  Full path: /var/log/nginx/error.log
+* pid /var/run/nginx.pid;
+  Stores the process Id of the main NGINX process
+  used for stopping/restarting NGINX
+* Handle PHP files : instructions n how to handle requests for PHP files: 
+  ~ regular expressions
+  \.php$ : mathces anu URI ending in .php like example.com/page.php
+  * fastcgi_pass unix:/var/run/php/php-fpm.sock;
+      -tells NGINX where to send PHP requests 
+      -uses a unix socket file for communication (faster than TCP)
+      -PHP-FMP(fastCGI Process Manager) listens to this socket 
+      -Alternative TCP format would be: fastcgi_pass 127.0.0.1:9000;
+      ---> * this says "send PHP requests to a program called PHP_FPM"
+           * PHP_FPM: it's like a helper that knows how to process PHP code.
+           * unix:/var/run/php/php-fpm.sock: this is the path to the socket file
+                which is like a telephone line that nginx uses to talk to PHP-FPM 
+  * fastcgi_index index.php;
+     -sets default PHP file to index.php where directory is requested
+     -if user visits example.com/blog/ it will try to serve blog/index.php
+  * fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    -Contructs th full path to the PHP SCRIPT_FILENAME
+    -$document_root is your site's root directory.
+    -$fastcgi_script_name is the requested PHP file
+    -example: if root is /var/www/html and request is for /blog/post.php
+          $document_root = /var/www/html
+          $fastcgi_script_name = /blog/post.php
+          Final path = /var/www/html/blog/post.php
+    -----> * this tells PHP-FPM where the php file is on your server
+           * $document_root: this is where your website files are stored(the 
+              base folder for your website)
+           * $fastcgi_script_name : this is the specific PHP file that the user is asking for
+           * Together if forms the full path to the PHP
+                like: /var/www/html/index.php
+  * include fastcgi_params:
+    -includes standard fastCGI paramaters from /etc/nginx/fastcgi_params
+    -contains essentil parameters like:
+        - QUERY_STRING (for GET parameters);
+        - REQUEST_METHOD   (GET, POST, ...)
+        - CONTENT_TYPE
+        - CONTENT_LENGTH
+        - server environment variables.
+    ---> * This includes a list of extra settings (stored in the fastcgi_params file).
+         * These settings help Nginx and PHP-FPM work smoothly together,
+           like passing environment variables or headers.
+     ===> Process flow when a PHP file is requested:
+        1- User requests example.om/page.php
+        2- NGINX matches the .php pattern.
+        3- NGINX passes request to PHP_FPM via the socket
+        4- PHP_FPM processes the PHP file
+        5- Result is sent back to NGINX
+        6- NGINX sends the response to the user.
