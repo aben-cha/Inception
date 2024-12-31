@@ -17,9 +17,11 @@ The objective is to gain hands-on experience with virtualization by creating and
 1- Virtual Machine Setup
   * Configure a personal virtual machine to host Docker containers.
   * Understand the prerequisites for Docker installation and optimization within a VM.
+
 2- Docker Image Creation
   * Build custom Docker images tailored to specific use cases.
   * Use Dockerfiles to automate the creation of images.
+
 3- Container Management
  * Run, stop, and manage multiple containers from your custom images.
  * Explore container networking, volume management, and resource allocation.
