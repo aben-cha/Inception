@@ -93,6 +93,10 @@
 
 
 =======> Docker Volumes:
+    * when we create -v db-data:/var/lib/mysql
+        * volumes are stored on the host system :
+        * docker volume inspcet db-data => to find the volume's location
+        * we look at the Mountpoint field show where the volume is stored on your host
     * allows us to share data (Files, Folders).
     * Between Host and Container.
     * Between conatiners
