@@ -47,3 +47,9 @@
 
 
 ======> difference betweem up/down and start/stop
+
+===> Commands:
+  * test the configuration:
+    docker-compose config
+  * restart the services 
+    docker-compose up -d 

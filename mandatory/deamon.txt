@@ -40,7 +40,7 @@
 =========> Container Nginx with TLSv1.2.
 * Nginx: is a popular open source web server, reverse proxy server, 
   and load balancer, it is widely used for serving static content, 
-  handling HTTP/HTTPS tarffic, and managing secure communication for
+  handling HTTP/HTTPS traffic, and managing secure communication for
   web applications.
 * TLS: Transport Layer Security
   ensures the confidentiality and integrity of data on 
@@ -86,3 +86,14 @@
 ========================> Container Nginx:
 * nginx it is a server that is going to serve web content to our browser
 * /Users/aben-cha/.brew/etc/nginx/
+
+
+
+======> Docker network: 
+* allow contaainers to communicate with each other.
+* the most commonly used network type is the bridge network, which
+  is isolated from external networks by deafult but allows containers
+  to communicate internally.
+* Test connectivity Between Containers:
+  1- docker exec -it container1 bash
+  2- ping container2
