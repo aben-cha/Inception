@@ -1,7 +1,7 @@
 services:
   mariadb:
     container_name: mariadb
-    image: mariadb:alpine
+    image: mariadb
     restart: always
     env_file:
       - .env
