@@ -1,0 +1,26 @@
+* CMD ["mysqld"]:
+  -starts the mariaDB server as the container's main process
+  -mysqld is the MariaDB daemon, which will run in the foreground
+   to keep the container alive
+
+* The Mysql/Mariadb server deamon (mysqld) is the main process
+  responsible for running a Mysql or MAriadb Server. it is a long
+  running process that listens for and process clients requests to
+  perform operations, including storing, retreiving, updating, 
+  deleteing data. 
+
+===> How Does mysqld Work :
+1- Initialization:
+    * When started, mysqld initializes by reading configuration files 
+      (e.g., /etc/my.cnf or /etc/mysql/my.cnf) and setting parameters.
+    * It also initializes necessary directories, logs, and files.
+2- Connection Handling:
+    * For each client connection, mysqld spawns or uses a 
+      thread to handle the client’s requests.
+3- Query Execution:
+    * Receives SQL queries, parses them, and translates them into low-level 
+      operations (e.g., file I/O or index lookups)
+    * Executes the queries and sends results back to the client.
+4- Data Management:
+    * Interacts with the storage engine to retrieve or modify 
+      data stored in the database files.
