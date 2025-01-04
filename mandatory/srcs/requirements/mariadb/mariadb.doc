@@ -24,3 +24,11 @@
 4- Data Management:
     * Interacts with the storage engine to retrieve or modify 
       data stored in the database files.
+
+=====> script 
+  * The default MariaDB Docker image uses an entrypoint script that 
+    automatically executes .sql and .sh files placed in 
+    /docker-entrypoint-initdb.d/ during the first startup of the container 
+    (when there is no existing database in /var/lib/mysql).
+  * The environment variables in the .env file are passed to the 
+    container and substituted in the SQL script when it's executed.
