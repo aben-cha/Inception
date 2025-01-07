@@ -1,3 +1,20 @@
-============> wordpress + php-fpm
-* gnupg2
-* 
+* FastCGI : (Common Gateway interface)
+  is a protocol that allows web servers to communicate with web applications
+  such as PHP scripts.
+* PHP_FPM (FastCGI Process Manager)
+  - is 
+  is an implementation of the FastCGI protocol specifically designed for use 
+  with PHP. It works by starting a pool of worker processes that are responsible 
+  for executing PHP scripts. When a web server receives a request for a PHP script,
+  it passes the request to one of the worker processes, which then executes the 
+  script and returns the result to the web server. This allows PHP scripts 
+  to be executed more efficiently, as the worker processes can be reused 
+  for multiple requests.
+
+
+======> Installation part:
+    php-fpm, php-mysql, curl 
+* php-fpm: is an implementation of FastCGI that is used to execute PHP scripts
+* php-mysql: is a PHP extension that allows PHP to communicate with Mysql databases;
+* curl : is a command line tool for transferring data using various network 
+         protocols, including HTTP, HTTPS, FTP.
