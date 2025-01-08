@@ -1,38 +1,36 @@
 #!/bin/bash
 
-sleep 10
-# if wp-config.php does not exist, create it 
-# if wordpress is not installed, install it
+mkdir -p /var/www/html
 
-# wp core install --allow-root \
-#     --url=localhost \
-#     --title=Inception \
-#     --admin_user=aben-cha \
-#     --admin_password=aben-cha@@ \
-#     --admin_email="admin@example.com" \
-#     --path='/var/www/wordpress'
+cd /var/www/html
+chown -R www-data:www-data /var/www/html
+chmod -R 755 /var/www/html
 
-# Check if WordPress is installed; if not, install it
-cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
+wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+mv wp-cli.phar /usr/local/bin/wp
+
+wp core download --allow-root
+
+cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+# wp config create \
+#     --dbname=db_wordpress \
+#     --dbuser=aben-cha \
+#     --dbpass=aben-cha@@ \
+#     --dbhost=mariadb --allow-root
+
+sed -i "s/database_name_here/db_wordpress/" wp-config.php
+sed -i "s/username_here/aben-cha/" wp-config.php
+sed -i "s/password_here/aben-cha@@/" wp-config.php
+sed -i "s/localhost/mariadb/" wp-config.php
+
+wp core install \
+    --url=localhost \
+    --title=inception \
+    --admin_user=admin \
+    --admin_password=admin \
+    --admin_email=admin@admin.com \
+    --allow-root
 
 
-cd /var/www/wordpress
-
-sed -i "s/define( 'DB_NAME', '.*' );/define( 'DB_NAME', 'db_wordpress' );/" wp-config.php
-sed -i "s/define( 'DB_USER', '.*' );/define( 'DB_USER', 'aben-cha' );/" wp-config.php
-sed -i "s/define( 'DB_PASSWORD', '.*' );/define( 'DB_PASSWORD', 'aben-cha@@' );/" wp-config.php
-sed -i "s/define( 'DB_HOST', '.*' );/define( 'DB_HOST', 'mariadb:3306' );/" wp-config.php
-
-if ! wp core is-installed --allow-root --path='/var/www/wordpress'; then
-    wp core install --allow-root \
-        --url=http://localhost \
-        --title=Inception \
-        --admin_user=aben-cha \
-        --admin_password=aben-cha@@ \
-        --admin_email=admin@example.com \
-        --path='/var/www/wordpress'
-fi
-
-
-# /usr/sbin/php-fpm8.2 -F
 php-fpm8.2 -F
