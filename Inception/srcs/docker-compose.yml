@@ -15,23 +15,28 @@ services:
     build: requirements/wordpress/
     env_file:
       - .env
-    # volumes:
-      # - ./wordpress:/var/www/wordpress
+    expose:
+      - 9000
+    volumes:
+      - wordpress_data:/var/www/html 
     networks:
       - inception
-#   nginx:
-#     container_name: nginx
-#     image: nginx:latest
-#     depends_on:
-#       - wordpress
-#     ports:
-#       - "8080:80"
-#     networks:
-#       - inception
-#     volumes:
-#       - ./nginx.conf:/etc/nginx/conf.d/default.conf;
-#       - ./wordpress:/var/www/wordpress
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    depends_on:
+      - wordpress
+    ports:
+      - "8080:80"
+    networks:
+      - inception
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf;
+      - wordpress_data:/var/www/html 
 networks:
   inception:
     driver: bridge
+
+volumes:
+  wordpress_data:
     
