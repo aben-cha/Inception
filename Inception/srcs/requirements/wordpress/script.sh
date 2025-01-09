@@ -11,25 +11,32 @@ mv wp-cli.phar /usr/local/bin/wp
 
 wp core download --allow-root
 
-cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
-# wp config create \
-#     --dbname=db_wordpress \
-#     --dbuser=aben-cha \
-#     --dbpass=aben-cha@@ \
-#     --dbhost=mariadb --allow-root
+# cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+wp config create --allow-root \
+    --dbname=${MYSQL_DATABASE} \
+    --dbuser=${MYSQL_USER} \
+    --dbpass=${MYSQL_PASSWORD} \
+    --dbhost=${DB_HOST} \
+    # --path=/var/www/html \
 
-sed -i "s/database_name_here/db_wordpress/" wp-config.php
-sed -i "s/username_here/aben-cha/" wp-config.php
-sed -i "s/password_here/aben-cha@@/" wp-config.php
-sed -i "s/localhost/mariadb/" wp-config.php
+# sed -i "s/database_name_here/db_wordpress/" wp-config.php
+# sed -i "s/username_here/aben-cha/" wp-config.php
+# sed -i "s/password_here/aben-cha@@/" wp-config.php
+# sed -i "s/localhost/mariadb/" wp-config.php
 
 wp core install \
     --url=localhost \
-    --title=inception \
+    --title=${TITLE} \
     --admin_user=admin \
     --admin_password=admin \
     --admin_email=admin@admin.com \
-    --allow-root
+    --skip-email --allow-root
+    # --path=/var/www/html \
+
+wp user create $WP_USR $WP_EMAIL \
+    --role=author \
+    --user_pass=$WP_PWD\
+     --allow-root
 
 
 php-fpm8.2 -F

@@ -6,8 +6,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY my.cnf /etc/mysql/mariadb.conf.d/
-COPY init.sql /etc/mysql/
+COPY script.sh .
+RUN chmod +x script.sh
+# RUN mkdir /run/mysqld
 
-RUN mkdir /run/mysqld
+# CMD ["mysqld"]
 
-CMD ["mysqld"]
+CMD ["./script.sh"]
