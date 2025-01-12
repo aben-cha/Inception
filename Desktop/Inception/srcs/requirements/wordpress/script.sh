@@ -27,10 +27,11 @@ wp config create --allow-root \
 wp core install \
     --url=${SITE_URL} \
     --title=${TITLE} \
-    --admin_user=admin \
-    --admin_password=admin \
+    --admin_user=ayoub \
+    --admin_password=ayoub \
     --admin_email=admin@admin.com \
-    --skip-email --allow-root
+    --skip-email \
+    --allow-root
     # --path=/var/www/html \
 
 wp user create $WP_USR $WP_EMAIL \
@@ -39,17 +40,20 @@ wp user create $WP_USR $WP_EMAIL \
      --allow-root
 
 # Configure Redis if applicable (optional)
-# wp config set WP_REDIS_HOST 'redis' --allow-root
-# wp config set WP_REDIS_PORT 6379 --allow-root
+wp config set WP_REDIS_HOST 'redis' --allow-root
+wp config set WP_REDIS_PORT 6379 --allow-root
+wp config set WP_CACHE true --allow-root
 # wp config set WP_REDIS_DATABASE 0 --allow-root
 # wp config set WP_CACHE_KEY_SALT 'inception' --allow-root
-# wp config set WP_CACHE true --allow-root
 
 # # Install Redis Cache plugin
-# wp plugin install redis-cache --activate --allow-root
+wp plugin install redis-cache --activate --allow-root
 
 # # Enable Redis cache
-# wp redis enable --allow-root
+wp redis enable --allow-root
+
+chown -R www-data /var/www/html
+chmod -R 777 /var/www/html
 
 
 php-fpm8.2 -F

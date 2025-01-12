@@ -39,7 +39,7 @@ services:
       - inception
     volumes:
       - ./default.conf:/etc/nginx/conf.d/default.conf
-      - wordpress:/var/www/html 
+      - wordpress:/var/www/html
   # ftp-server:
   #   container_name: ftp-server
   #   build: requirements/bonus/ftp/
@@ -59,8 +59,12 @@ services:
     restart: always
     ports:
       - "8080:8080"
-    environment:
-      - ADMINER_DESIGN=mvt
+    networks:
+      - inception
+  redis:
+    container_name: redis
+    build: requirements/bonus/redis/
+    restart: always
     networks:
       - inception
 
