@@ -25,7 +25,7 @@ wp config create --allow-root \
 # sed -i "s/localhost/mariadb/" wp-config.php
 
 wp core install \
-    --url=localhost \
+    --url=${SITE_URL} \
     --title=${TITLE} \
     --admin_user=admin \
     --admin_password=admin \
