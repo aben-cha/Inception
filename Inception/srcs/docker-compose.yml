@@ -67,6 +67,19 @@ services:
     restart: always
     networks:
       - inception
+  portainer:
+    container_name: portainer
+    build: requirements/bonus/portainer/
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - inception
+    
+
 
 networks:
   inception:
@@ -75,4 +88,5 @@ networks:
 volumes:
   wordpress:
   db_data:
+  portainer_data:
     

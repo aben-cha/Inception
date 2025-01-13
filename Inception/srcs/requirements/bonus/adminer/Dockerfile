@@ -1,9 +1,9 @@
 FROM debian:12.8
 
 RUN apt-get update -y && \
-apt-get upgrade -y && \
-apt-get install -y wget php-cli php-mysqli && \
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get upgrade -y && \
+    apt-get install -y wget php-cli php-mysqli && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir -p /var/www/html && \
     wget -O /var/www/html/index.php https://www.adminer.org/latest.php && \
