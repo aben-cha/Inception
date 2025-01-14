@@ -40,19 +40,19 @@ services:
     volumes:
       - ./default.conf:/etc/nginx/conf.d/default.conf
       - wordpress:/var/www/html
-  # ftp-server:
-  #   container_name: ftp-server
-  #   build: requirements/bonus/ftp/
-  #   restart: always
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - "21:21"
-  #     - "10000-10100:10000-10100" # passive FTP port range
-  #   networks:
-  #     - inception
-  #   volumes:
-  #     - wordpress:/home/${FTP_USER}/ftp/files
+  ftp:
+    container_name: ftp
+    build: requirements/bonus/ftp/
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "21:21"
+      - "50000-51000:50000-51000" # passive FTP port range
+    networks:
+      - inception
+    volumes:
+      - wordpress:/home/${FTP_USER}/ftp/files
   adminer:
     container_name: adminer
     build: requirements/bonus/adminer/
