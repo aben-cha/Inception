@@ -1,5 +1,6 @@
 up:
-	cd ./srcs && docker-compose up --build
+	docker-compose -f ./srcs/docker-compose.yml up --build
 down:
-	cd ./srcs && docker-compose down -v
-
+	docker-compose -f ./srcs/docker-compose.yml down -v
+clean:
+	@docker rmi -f $(docker images -q)  || true

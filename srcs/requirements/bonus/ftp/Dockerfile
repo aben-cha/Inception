@@ -5,9 +5,11 @@ RUN apt-get update -y && \
     apt-get install vsftpd -y && \
     rm -rf rm -rf /var/lib/apt/lists/*
 
-COPY vsftpd.conf /etc/vsftpd.conf
-COPY sc.sh .
-RUN chmod +x sc.sh
-# 21:21 for control port
+COPY script.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/script.sh
 
-CMD [ "./sc.sh" ]
+EXPOSE 21
+EXPOSE 30000-30100
+
+CMD [ "/usr/local/bin/script.sh" ]
+

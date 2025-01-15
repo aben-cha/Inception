@@ -16,7 +16,15 @@ mkdir -p ${FTP_DIR}
 chmod -R 755 ${FTP_DIR}
 
 # Set the ownership of the directory to the FTP user
-chown -R ${FTP_USER}:${FTP_USER} /home/${FTP_USER}
+chown -R ${FTP_USER}:${FTP_USER} ${FTP_DIR}
+
+
+# sed -i "s/listen=NO/listen=YES/" /etc/vsftpd.conf
+# echo "write_enable=YES
+# chroot_local_user=YES
+# pasv_enable=YES
+# pasv_min_port=30000
+# pasv_max_port=30100" >> /etc/vsftpd
 
 # Creates a complete vsftpd.conf file instead of modifying existing one
 # Configure VSFTPD
@@ -34,11 +42,6 @@ pasv_max_port=30100
 userlist_enable=YES
 userlist_file=/etc/vsftpd.userlist
 userlist_deny=NO
-pasv_address=10.12.100.87
 EOF
-
-mkdir -p /var/run/vsftpd/empty
-chmod 755 /var/run/vsftpd/empty
-# OR chroot_local_user=NO
 
 /usr/sbin/vsftpd
