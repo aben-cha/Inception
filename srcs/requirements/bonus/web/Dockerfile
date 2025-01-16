@@ -3,7 +3,7 @@ RUN apt-get update -y && \
     apt-get install -y nginx && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ./conf/nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 WORKDIR /var/www/html
 

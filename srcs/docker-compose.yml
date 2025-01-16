@@ -27,20 +27,34 @@ services:
     networks:
       - inception
   
+  # nginx:
+  #   container_name: nginx
+  #   image: nginx:latest
+  #   restart: always
+  #   depends_on:
+  #     - wordpress
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "80:80"
+  #   networks:
+  #     - inception
+  #   volumes:
+  #     - ./default.conf:/etc/nginx/conf.d/default.conf
+  #     - wordpress:/var/www/html
   nginx:
     container_name: nginx
-    image: nginx:latest
+    build: requirements/nginx/.
     restart: always
     depends_on:
       - wordpress
     env_file:
       - .env
     ports:
-      - "80:80"
+      - "443:443"
     networks:
       - inception
     volumes:
-      - ./default.conf:/etc/nginx/conf.d/default.conf
       - wordpress:/var/www/html
   
   ftp:
@@ -89,7 +103,7 @@ services:
     container_name: web
     build: requirements/bonus/web/.
     ports:
-      - 3000:80
+      - "3000:80"
     networks:
       - inception
 
