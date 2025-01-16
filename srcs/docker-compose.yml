@@ -84,7 +84,14 @@ services:
       - portainer_data:/data
     networks:
       - inception
-    
+  
+  web:
+    container_name: web
+    build: requirements/bonus/web/.
+    ports:
+      - 3000:80
+    networks:
+      - inception
 
 networks:
   inception:
