@@ -170,3 +170,69 @@
 
 
 ![Alt Text](PID1_vs_daemons.png)
+
+
+# Docker Compose:
+* Docker Compose is a tool for defining and running multi-container applications.
+* Docker Compose is a tool that simplifies the management of multi-container
+  Docker applications. it allows you to define and run multiple services in a 
+  single file called Docker-compose.yml
+* With compose you can define how your application components interact, their 
+  configurations and network settings, enabling you todeploy comple applications
+  more easily.
+
+# Docker Volumes:
+* Volumes are persistent data stores for containers created and managed by Docker.
+* Docker containers are ephemeral, meaning that any data inside the container is lost
+  when the container is removed.
+* Volumes allow you to persist data across container restarts and even container removals.
+
+# Why Use Docker Volumes? 
+1- Data Persistence
+2- Data Sharing
+3- Backup and Restore
+4- Isolation
+
+# Types of Volumes in Docker:
+1- Named Volumes: these are Docker-managed volumes with a specific name. Docker automatically
+   handles the location and management of the volume.
+   Example : my_app_data:/app/data.
+   Docker will automatically create the volume my_app_data if it doesn't exist. The volume will 
+   be stored in the default Docker volume directory (e.g., /var/lib/docker/volumes/ on Linux). 
+   You don't need to worry about the underlying directory on the host.
+2- Anonymous Volumes: These are volumes that Docker automatically creates when not explicitly
+   named they are used for temporary storage.
+   Example : /container_path
+   /container_path: This specifies the path inside the container where Docker will automatically mount 
+   an anonymous volume.
+   Docker will create an anonymous volume on the fly and mount it to /container_path inside the container.
+3- Host-Mounted Volumes: these are volumes that are mapped directly to the host system's
+   directly or file.
+   Example : ./local_data:/app/local_data
+   In this case, ./local_data is a directory on your host machine (relative to the current directory). 
+   This means any changes made to the files in this directory on the host will be reflected inside the 
+   container, and vice versa
+
+# Docker Networking
+* Container networking refers to the ability for containers to connect to and communicate with each other
+* Docker networking allows containers to communicate with each other, the host machine, and external networks.
+
+# Types of Docker Networks
+1- Bridge Network (Default)
+  - Containers connected to the network can communicate with each other, but they’re 
+    isolated from those outside the network.
+  - How It Works: Containers on the bridge network are connected to a private internal network, 
+    and Docker sets up a virtual Ethernet bridge (docker0) on the host to route traffic between 
+    containers and the outside world.
+2- Host Network:
+  - the container shares the same network namespace as the host, meaning it directly accesses 
+    the host’s networking  stack.
+  - How It Works: The container uses the host’s IP address and network interfaces for communication. 
+    No isolation is provided between the container and the host's network.
+3- Overlay Network:
+  - Allows containers running on different Docker hosts to communicate with each other. This is ideal 
+    for multi-host or distributed applications, especially in Docker Swarm or Kubernetes environments.
+  - Docker creates an internal network and manages IP addressing, allowing containers on different 
+    hosts to communicate securely through tunneling
+4- None Network
+  - This driver disables all networking for the container. The container has no access to the network.

@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   mariadb:
     container_name: mariadb
@@ -115,3 +117,18 @@ volumes:
   wordpress:
   db_data:
   portainer_data:
+
+
+# volumes:
+#   wordpress:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       device: /home/login/data   # Path on the host system
+#       o: bind
+
+
+# driver: local: Uses the host's local filesystem to manage the volume's data.
+# The bind mount (o: bind) ensures that the data from the host 
+# directory is directly mapped into the container, so changes to the host 
+# directory reflect immediately inside the container.
