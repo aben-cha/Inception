@@ -48,7 +48,7 @@
         * A docker registries stores Docker images 
         * Docker Hub ia s public registry that anyone can use and Docker looks 
           for images on Docker Hub by default, you can even run your own private registry
-        * Whe you use the docker pull or docker run commands, docker pulls the required
+        * When you use the docker pull or docker run commands, docker pulls the required
           images from your configured registry
     5- Docker Images:
         * Read only templates that define what's inside a container, including
@@ -123,9 +123,8 @@
 # PID 1:
 * PID 1 is the first process that is started by the kernel during the boot 
   process it plays a crucial role in system initilization and process management 
-* PID 1 in Docker Containers:
-  - In Docker the process defined in the conatiner's ENRTYPOINT or CMD 
-    becomes the conatiner's PID 1
+* PID stands for Process ID. Every program or process running on your computer gets 
+  a unique number called a PID
 * Why is PID 1 Special?
   - Lifecycle Role: 
     as the first process it persists for the entire uptime of the system if PID 1
@@ -133,8 +132,41 @@
   - System Signals:
     PID 1 is treated specially by the kernel and receives signals like SIGINT, 
     SIGTERM and SIGKILL directly during system shutdown.
+  - PID 1 is the parent of all processes. when your computers starts, the operating system's
+    kernel (the core part of the OS) runs a program to get everything going. this first
+    program is assigned PID1
+  - On most systems, PID 1 is a program called init or a modern replacement like systemd
+
 * PID 1 is the cornerstone of process management in Linux. It starts the user space, 
   initializes services, and ensures process cleanup. In containers, PID 1 behaves 
   similarly but often requires special attention to handle signals and manage processes 
   effectively.
+
+* What does PID 1 do?
+  - Starts other processes: it launches all the eseential programs your computers needs to work
+                            like networking, user interfaces, etc.
+  - Manages processes: if a program crashes or its parent process stops, PID 1 steps 
+                       in to adopt it and clean it up
+  - Keeps the system stable: Since PID 1 is always running, if it fials or crashes, 
+                      the entire system might stop working .
+
+* PID 1 in Docker Containers:
+  - In Docker containers, PID 1 plays a critical role because it is the first process that 
+    runs when the container starts
+  - In Docker the process defined in the conatiner's ENRTYPOINT or CMD 
+    becomes the conatiner's PID 1
+  - When working with servers, containers (like Docker), or debugging, you'll often interact 
+    with PID 1 because it controls how the system or container starts and behaves.
+  - In Docker, for example, if your main process doesn't run as PID 1, it can cause issues 
+    with managing signals like stopping or restarting the container.
 * The container’s PID 1 is independent of the VM’s PID 1.
+
+
+# Daemons:
+* A daemon is a background process that runs continuously, usually to 
+  perform a specific service or function such as:
+  - Serving web pages (nginx, httpd)
+  - Managing databases (mysqld, postgres).
+
+
+![Alt Text](PID1_vs_daemons.png)
