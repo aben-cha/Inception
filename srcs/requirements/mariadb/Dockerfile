@@ -1,15 +1,11 @@
-FROM debian:12.8
+FROM debian:12
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install mariadb-server -y && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install mariadb-server -y
 
-COPY my.cnf /etc/mysql/mariadb.conf.d/
-COPY script.sh .
+COPY conf/my.cnf /etc/mysql/mariadb.conf.d/
+COPY tools/script.sh .
 RUN chmod +x script.sh
-# RUN mkdir /run/mysqld
 
-# CMD ["mysqld"]
-
-CMD ["./script.sh"]
+CMD ["/script.sh"]
