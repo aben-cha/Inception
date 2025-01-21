@@ -2,5 +2,5 @@ up:
 	docker-compose -f ./srcs/docker-compose.yml up --build
 down:
 	docker-compose -f ./srcs/docker-compose.yml down -v
-clean:
-	@docker rmi -f $(docker images -q)  || true
+clean: down
+	docker image prune -af

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # # Create the FTP user
-# useradd ${FTP_USER}
-adduser ${FTP_USER} --disabled-password --gecos ""
+useradd ${FTP_USER}
+# adduser ${FTP_USER} --disabled-password --gecos ""
 
 # Set the user's password
 echo "$FTP_USER:$FTP_PWD" | chpasswd
@@ -32,7 +32,7 @@ pasv_enable=YES
 pasv_min_port=30000
 pasv_max_port=30100
 userlist_enable=YES
-userlist_file=/etc/vsftpd.userlist
+# userlist_file=/etc/vsftpd.userlist
 userlist_deny=NO
 pasv_address=10.12.100.87
 EOF
