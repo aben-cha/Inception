@@ -9,7 +9,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - DB:/var/lib/mysql
     networks:
       - inception
   
@@ -24,25 +24,10 @@ services:
     expose:
       - 9000
     volumes:
-      - wordpress:/var/www/html 
+      - WordPress:/var/www/html 
     networks:
       - inception
-  
-  # nginx:
-  #   container_name: nginx
-  #   image: nginx:latest
-  #   restart: always
-  #   depends_on:
-  #     - wordpress
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - "80:80"
-  #   networks:
-  #     - inception
-  #   volumes:
-  #     - ./default.conf:/etc/nginx/conf.d/default.conf
-  #     - wordpress:/var/www/html
+
   nginx:
     container_name: nginx
     build: requirements/nginx/.
@@ -56,7 +41,7 @@ services:
     networks:
       - inception
     volumes:
-      - wordpress:/var/www/html
+      - WordPress:/var/www/html
   
   ftp:
     container_name: ftp
@@ -66,11 +51,11 @@ services:
       - .env
     ports:
       - "21:21"
-      - "30000-30100:30000-30100" # passive FTP port range
+      - "30000-30100:30000-30100"
     networks:
       - inception
     volumes:
-      - wordpress:${FTP_DIR}
+      - WordPress:${FTP_DIR}
 
   adminer:
     container_name: adminer
@@ -113,21 +98,15 @@ networks:
     driver: bridge
 
 volumes:
-  wordpress:
-  db_data:
-  portainer_data:
-
-
-# volumes:
-#   wordpress:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       device: /home/login/data   # Path on the host system
-#       o: bind
-
-
-# driver: local: Uses the host's local filesystem to manage the volume's data.
-# The bind mount (o: bind) ensures that the data from the host 
-# directory is directly mapped into the container, so changes to the host 
-# directory reflect immediately inside the container.
+  DB:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/aben-cha/data/db
+  WordPress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/aben-cha/data/wordpress
