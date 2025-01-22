@@ -1,9 +1,8 @@
-FROM debian:12
+FROM debian:12-slim
 
 RUN apt-get update -y && \ 
     apt-get upgrade -y && \
-    apt-get install vsftpd -y && \
-    rm -rf rm -rf /var/lib/apt/lists/*
+    apt-get install vsftpd -y
 
 COPY tools/script.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/script.sh

@@ -1,4 +1,4 @@
-FROM debian:12
+FROM debian:12-slim
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \

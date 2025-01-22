@@ -1,7 +1,8 @@
-FROM debian:12
+FROM debian:12-slim
+
 RUN apt-get update -y && \
-    apt-get install -y nginx && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get upgrade -y && \
+    apt-get install -y nginx
 
 COPY conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 
