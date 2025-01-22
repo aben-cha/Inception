@@ -5,7 +5,7 @@ RUN apt-get update -y && \
     apt-get install vsftpd -y && \
     rm -rf rm -rf /var/lib/apt/lists/*
 
-COPY script.sh /usr/local/bin/
+COPY tools/script.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/script.sh
 
 EXPOSE 21

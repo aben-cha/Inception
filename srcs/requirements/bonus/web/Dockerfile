@@ -7,7 +7,7 @@ COPY conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 WORKDIR /var/www/html
 
-COPY app/ . 
+COPY tools/app/ . 
 
 EXPOSE 80
 

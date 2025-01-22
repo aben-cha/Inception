@@ -6,6 +6,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
-COPY redis.conf /etc/redis/redis.conf
+COPY conf/redis.conf /etc/redis/redis.conf
 
 CMD ["redis-server", "--protected-mode", "no"]
