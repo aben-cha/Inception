@@ -55,7 +55,7 @@ services:
       - .env
     ports:
       - "21:21"
-      - "30000-30150:30000-30150"
+      - "30000-30100:30000-30100"
     networks:
       - inception
     volumes:

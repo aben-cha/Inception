@@ -39,6 +39,6 @@ wp plugin install redis-cache --activate --allow-root
 wp redis enable --allow-root
 
 chown -R www-data:www-data /var/www/html
-chmod -R 755 /var/www/html
+chmod -R 777 /var/www/html
 
 php-fpm8.2 -F

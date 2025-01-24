@@ -14,7 +14,8 @@ sed -i 's|#write_enable=YES|write_enable=YES|' /etc/vsftpd.conf
 echo "
 pasv_enable=YES
 pasv_min_port=30000
-pasv_max_port=30150
+pasv_max_port=30100
 " >> /etc/vsftpd.conf
 
-/usr/sbin/vsftpd
+# /usr/sbin/vsftpd
+vsftpd /etc/vsftpd.conf
