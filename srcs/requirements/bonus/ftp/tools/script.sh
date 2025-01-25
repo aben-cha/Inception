@@ -17,5 +17,4 @@ pasv_min_port=30000
 pasv_max_port=30100
 " >> /etc/vsftpd.conf
 
-# /usr/sbin/vsftpd
 vsftpd /etc/vsftpd.conf
